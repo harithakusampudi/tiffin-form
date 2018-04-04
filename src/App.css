@@ -6,3 +6,20 @@
     justify-content:center;
     height:300px;
   }
+.input_box{
+  width:300px;
+  height:30px;
+  margin-top: 4px;
+  border-color:#efefef;
+}
+.button_box{
+  width:70px;
+  height:30px;
+  margin-top: 4px;
+}
+.form{
+  letter-spacing: 2px;
+  color:blue;
+  font-weight:bold;
+  font-size:20px;
+}

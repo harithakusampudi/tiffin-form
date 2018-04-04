@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import CustomDropdown from './CustomDropdown.js'
+import CustomDropdown from './CustomDropdown.js';
+import {browserHistory}from 'react-router'
+
 
 class App extends Component {
   constructor(props){
@@ -26,22 +28,15 @@ class App extends Component {
     this.setState({selectedprice: event.target.value});
   }
   render() {
-    console.log("PROPS",this.props)
     return (
       <div class="container">
-        <div>
-      <p>Tiffin section</p>
-      <label>Item:
-       <CustomDropdown arr={["dosa","idly","vada"]} value={this.state.selecteditem} onChange={this.handleChangeItem}>
-        </CustomDropdown ></label><br/><br/>
-       <label>Type:
-       <CustomDropdown arr={["panneer","butter","cheese"]} value={this.state.selecteditype} onChange={this.handleChangeType}>
-       </CustomDropdown >
-      </label><br/><br/>
-       <label>Price:
-       <CustomDropdown arr={["50-100","100-200","200-300"]}value={this.state.selectedprice} onChange={this.handleChangePrice}>
-       </CustomDropdown ></label><br/><br/>
-         <button onClick={this.msg}>done</button>
+      <div>
+      <p class="form">Registration form</p>
+      <CustomDropdown class={"input_box"} placeholder={"Username"}></CustomDropdown>
+      <CustomDropdown class={"input_box"}placeholder={"Email Id"}></CustomDropdown>
+      <CustomDropdown class={"input_box"}placeholder={"Password"}></CustomDropdown>
+       <button class="button_box"onClick={this.msg}>Create</button>
+       <p>Already registered?<button onClick={browserHistory.push('/login') }>Login</button></p>
       </div>
       </div>
      
