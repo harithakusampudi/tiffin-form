@@ -1,32 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
 import CustomDropdown from './CustomDropdown.js';
-import {browserHistory}from 'react-router'
+import {
+  withRouter
+} from "react-router-dom";
+
 
 
 class App extends Component {
   constructor(props){
   super(props);
-   this.state={selecteditem:"",selectedtype:"",selectedprice:""
-   };
-   this.handleChangeItem = this.handleChangeItem.bind(this);
-   this.handleChangeType = this.handleChangeType.bind(this);
-   this.handleChangePrice = this.handleChangePrice.bind(this);
    this.msg=this.msg.bind(this);
+   this.myFunction=this.myFunction.bind(this);
   }
   msg(event){
     event.preventDefault();
-    alert("you have choosen" +this.state.selecteditem +this.state.selectedtype +"and its price is :" +this.state.selectedprice)
+    // alert("you have choosen" +this.state.selecteditem +this.state.selectedtype +"and its price is :" +this.state.selectedprice)
+    alert("Registration successfull")
+  };
+
+  myFunction() {
+    this.props.history.push("/login");
   }
-  handleChangeItem(event) {
-    this.setState({selecteditem: event.target.value});
-  }
-  handleChangeType(event) {
-    this.setState({selectedtype: event.target.value});
-  }
-  handleChangePrice(event) {
-    this.setState({selectedprice: event.target.value});
-  }
+
   render() {
     return (
       <div class="container">
@@ -36,12 +32,11 @@ class App extends Component {
       <CustomDropdown class={"input_box"}placeholder={"Email Id"}></CustomDropdown>
       <CustomDropdown class={"input_box"}placeholder={"Password"}></CustomDropdown>
        <button class="button_box"onClick={this.msg}>Create</button>
-       <p>Already registered?<button onClick={browserHistory.push('/login') }>Login</button></p>
+       <p>Already registered? <button onClick={() => this.myFunction()}>Login</button></p>
       </div>
       </div>
      
     );
   }
-}
-
-export default App;
+  }
+export default withRouter(App);
